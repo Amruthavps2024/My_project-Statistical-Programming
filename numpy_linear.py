@@ -4,10 +4,10 @@ import matplotlib.pyplot as plt
 import timeit
 class SimpleLinearRegression:
     def fit(self, X, y):
-        #//code adapted from Batuhan,2019
+       
         X_b = np.c_[np.ones((len(X), 1)), X]  # Add a bias term
         params = np.linalg.inv(X_b.T.dot(X_b)).dot(X_b.T).dot(y)
-        #//end of adapted code
+      
         return params
     def predict(self, X, params):
         X_b = np.c_[np.ones((len(X), 1)), X]
@@ -23,13 +23,11 @@ def linear_regression():
     
     
     # Splitting into Training/Testing
-    #//code adapted from Rotem,2019
     spl = 0.2
     N = len(X)
     sample = int(spl*N)
     X_train, X_test,  = X[:-sample], X[-sample:]
     y_train, y_test   = y[:-sample],y[-sample:]
-   #//end of adapted code 
     # Building the Regression Model
     reg = SimpleLinearRegression()
     params = reg.fit(X_train, y_train)
@@ -43,9 +41,7 @@ def linear_regression():
     print('R-squared (Efficiency):', round(r_squared, 3))
 
     # Calculate MSE, MAE, RMSE
-    #//code adapted from Siammi,2013
     mse = np.mean((predictions - y_test) ** 2)
-    #//end of the code
     mae = np.mean(np.abs(predictions - y_test))
     rmse = np.sqrt(mse)
 
