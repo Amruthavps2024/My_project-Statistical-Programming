@@ -14,11 +14,8 @@ df_binary = df.rename(columns={ 'Weight': 'wgt','CO2': 'CO'})
 # Renaming the columns for easier writing of the code
 df_binary.head()
 df_binary.info()
-
-#//code adapted from Jolly K,2018
 print(df_binary.isnull().any())
 df_binary = df_binary.dropna()
-#//end of adapted code
 def scikit_linear_regression():
 # Split into Features and Label
     X= df_binary['wgt'].values.reshape(-1, 1)
@@ -33,7 +30,6 @@ def scikit_linear_regression():
     print(df_binary.head())
 
 # Splitting into Training/Testing
-#//code adapted from Douglass, 2020
     test_dataset_size = 0.2
     X_train, X_test, y_train, y_test = train_test_split(X,y, random_state=1, test_size=test_dataset_size)
 
@@ -43,7 +39,6 @@ def scikit_linear_regression():
 
 # Assess the Accuracy
     predictions = model.predict(X_test)
-#//end of adapted code
 # Obtaining the Mean Absolute Error
 
     score = metrics.mean_absolute_error(y_test, predictions)
@@ -53,15 +48,13 @@ def scikit_linear_regression():
 # Calculate R-squared
     r_squared = r2_score(y_test,predictions)
     print('R-squared (Efficiency):', round(r_squared, 3))
-    
-#//  Code adapted from Greg,2013
+
 #mse
     mse = metrics.mean_squared_error(y_test, predictions)
     print('MSE:', round(mse, 3))
 #rmse
     rmse = np.sqrt(mse)
     print('RMSE:', round(rmse, 3))
-#//end of adapted code
 
 
 # Using the model
